@@ -53,10 +53,12 @@ export default () => {
 
           <div class="col-lg-6">
             <form
-              action="forms/contact.php"
+              class="needs-validation"
+              name="website message"
               method="post"
-              role="form"
-              class="php-email-form"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              novalidate
             >
               <div class="form-row">
                 <div class="col-md-6 form-group">
