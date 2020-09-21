@@ -9,7 +9,7 @@ import Education from "../components/education";
 import Sponsors from "../components/sponsors";
 import Films from "../components/films";
 import Layout from "../components/layout";
-import Contact from "../components/Contact";
+import Contact from "../components/contact";
 import Navigator from "../components/navigation";
 import ArticlePreview from "../components/article-preview";
 import { ParallaxProvider } from "react-scroll-parallax";
