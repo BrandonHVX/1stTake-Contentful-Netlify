@@ -3,6 +3,17 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
 export default () => {
+  handleSubmit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "student apps", ...this.state })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  };
   return (
     <section id="contact" class="page-section contact section-bg">
       <div class="container" data-aos="fade-up">
