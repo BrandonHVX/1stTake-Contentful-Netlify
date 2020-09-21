@@ -1,141 +1,256 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Link, graphql } from "gatsby";
+import get from "lodash/get";
+import { Helmet } from "react-helmet";
+import {
+  Button,
+  Carousel,
+  Form,
+  Tab,
+  Tabs,
+  Nav,
+  Col,
+  Row
+} from "react-bootstrap";
 
-export default () => {
+import Layout from "../components/layout";
+import ArticlePreview from "../components/article-preview";
+import { State } from "xstate";
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
+class ContactForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      first: "",
+      last: "",
+      dob: "",
+      age: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: "",
+      home: "",
+      cell: "",
+      email: "",
+      school: "",
+      relation: "",
+      ethnicity: "",
+      grade: "",
+      parentOneFirstName: "",
+      parentOneLastName: "",
+      parentOneAddress: "",
+      parentOneCity: "",
+      parentOneState: "",
+      parentOneZip: "",
+      parentOneHome: "",
+      parentOneCell: "",
+      parentOneEmail: "",
+      parentTwoFirstName: "",
+      parentTwoLastName: "",
+      parentTwoAddress: "",
+      parentTwoCity: "",
+      parentTwoState: "",
+      parentTwoZip: "",
+      parentTwoHome: "",
+      parentTwoCell: "",
+      parentTwoEmail: ""
+    };
+  }
+
+  /* Here’s the juicy bit for posting the form submission */
+
   handleSubmit = e => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "student apps", ...this.state })
+      body: encode({ "form-name": "web messsage", ...this.state })
     })
       .then(() => alert("Success!"))
       .catch(error => alert(error));
 
     e.preventDefault();
   };
-  return (
-    <section id="contact" class="page-section contact section-bg">
-      <div class="container" data-aos="fade-up">
-        <div
-          class=" section-heading"
-          data-wow-delay="0ms"
-          data-wow-duration="1000ms"
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+  _next = () => {
+    let currentStep = this.state.currentStep;
+    currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+    this.setState({
+      currentStep: currentStep
+    });
+  };
+
+  _prev = () => {
+    let currentStep = this.state.currentStep;
+    currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+    this.setState({
+      currentStep: currentStep
+    });
+  };
+
+  previousButton() {
+    let currentStep = this.state.currentStep;
+    if (currentStep !== 1) {
+      return (
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={this._prev}
         >
-          <h3 class="mrb-15 text-gray "> Contact</h3>
-          <hr className="divider mb-4" />
-        </div>
+          Previous
+        </button>
+      );
+    }
+    return null;
+  }
 
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>100 NW 17th Street, Miami, FLorida 33127</p>
-            </div>
-          </div>
+  nextButton() {
+    let currentStep = this.state.currentStep;
+    if (currentStep < 3) {
+      return (
+        <button
+          className="btn btn-primary float-right"
+          type="button"
+          onClick={this._next}
+        >
+          Next
+        </button>
+      );
+    }
+    return null;
+  }
+  render() {
+    const {
+      first,
+      last,
+      dob,
+      address,
+      city,
+      state,
+      age,
+      zip,
+      home,
+      cell,
+      email,
+      ethnicity,
+      grade,
+      school,
+      parentOneRelation,
+      parentTwoRelation,
+      parentOneFirstName,
+      parentOneLastName,
+      parentOneAddress,
+      parentOneCity,
+      parentOneState,
+      parentOneZip,
+      parentOneHome,
+      parentOneCell,
+      parentOneEmail,
+      parentTwoFirstName,
+      parentTwoLastName,
+      parentTwoAddress,
+      parentTwoCity,
+      parentTwoState,
+      parentTwoZip,
+      parentTwoHome,
+      parentTwoCell,
+      parentTwoEmail
+    } = this.state;
 
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p>1stakeyouthfilm@gmail.com</p>
-            </div>
-          </div>
+    return (
+      <Layout>
+        <div style={{ background: "#fff" }}>
+          <div>Student Enrollment</div>
+          <div className="container">
+            <section id="form">
+              <div
+                class=" section-heading mt-5 "
+                data-wow-delay="0ms"
+                data-wow-duration="1000ms"
+              >
+                <h3 class="mrb-15 text-gray ">1st Take Student Enrollment</h3>
+                <hr className="divider mb-4" />
 
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p>+1-305-555-5555</p>
-            </div>
-          </div>
-        </div>
+                <p>
+                  Please fill out the application below and submit when
+                  complete.
+                </p>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <form
+                      class="needs-validation"
+                      name="web message"
+                      method="post"
+                      data-netlify="true"
+                      data-netlify-honeypot="bot-field"
+                      novalidate
+                    >
+                      <input
+                        type="hidden"
+                        name="form-name"
+                        value="web message"
+                      />
+                      <div class=" small-heading">
+                        <h4 class=" text-gray ">Student Information</h4>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-7">
+                          {" "}
+                          <div className="form-row">
+                            <div class="form-group col-sm-7">
+                              <h6 class="text-left text-none">First Name</h6>
+                              <input
+                                class="form-control"
+                                type="text"
+                                name="first"
+                                id="validationCustom01"
+                                placeholder="First Name"
+                                value={first}
+                                onChange={this.handleChange}
+                                required
+                              />
+                              <div class="invalid-feedback">
+                                Please choose a username.
+                              </div>
+                            </div>
+                            <div class="form-group col-sm-5">
+                              <h6 class="text-left text-none">Student Name</h6>
+                              <input
+                                class="form-control "
+                                type="text"
+                                name="last"
+                                placeholder="Last Name"
+                                value={last}
+                                onChange={this.handleChange}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-        <div class="row">
-          <div class="col">
-            <iframe
-              title="google-map"
-              src="https://www.google.com/maps?q=100%20NW%2017th%20Street%2C%20Miami%2C%20FLorida%2033127&t=&z=17&ie=UTF8&iwloc=&output=embed"
-              allowFullScreen
-              className="md-height"
-            ></iframe>
-          </div>
+                      <div className="row"></div>
 
-          <div class="col-lg-6">
-            <form
-              class="needs-validation"
-              name="website message"
-              method="post"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
-              novalidate
-            >
-              <div class="form-row">
-                <div class="col-md-6 form-group">
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control"
-                    id="name"
-                    placeholder="Your Name"
-                    data-rule="minlen:4"
-                    data-msg="Please enter at least 4 chars"
-                  />
-                  <div class="validate"></div>
+                      <button type="submit" class="btn btn-primary mt-5">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
                 </div>
-                <div class="col-md-6 form-group">
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="email"
-                    placeholder="Your Email"
-                    data-rule="email"
-                    data-msg="Please enter a valid email"
-                  />
-                  <div class="validate"></div>
-                </div>
               </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="subject"
-                  id="subject"
-                  placeholder="Subject"
-                  data-rule="minlen:4"
-                  data-msg="Please enter at least 8 chars of subject"
-                />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <textarea
-                  class="form-control"
-                  name="message"
-                  rows="5"
-                  data-rule="required"
-                  data-msg="Please write something for us"
-                  placeholder="Message"
-                ></textarea>
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">
-                  Your message has been sent. Thank you!
-                </div>
-              </div>
-              <div class="text-center">
-                <button className="btn btn-outline" type="submit">
-                  Send Message
-                </button>
-              </div>
-            </form>
+            </section>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </Layout>
+    );
+  }
+}
+
+export default ContactForm;
