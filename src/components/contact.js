@@ -219,12 +219,13 @@ class ContactForm extends React.Component {
               <div class="col-lg-6">
                 <form
                   class="needs-validation"
-                  name="website message"
+                  name="web message"
                   method="post"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   novalidate
                 >
+                  <input type="hidden" name="form-name" value="web message" />
                   <div class="form-row">
                     <div class="col-md-6 form-group">
                       <input
@@ -260,7 +261,7 @@ class ContactForm extends React.Component {
                       name="subject"
                       id="validationCustom01"
                       placeholder="Subject"
-                      value={email}
+                      value={subject}
                       onChange={this.handleChange}
                       required
                     />
