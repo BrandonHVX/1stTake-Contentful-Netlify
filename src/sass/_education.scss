@@ -1,0 +1,149 @@
+section.education {
+  position: relative;
+  z-index: -999;
+  background-image: url("https://firsttake.s3.amazonaws.com/ft01.jpg");
+  background-position: center;
+  @include background-cover;
+  .education-content {
+    position: relative;
+    z-index: 1;
+    h2 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: rgba(252, 252, 252, 0.968);
+    }
+    .display-font {
+      color: $theme-primary;
+      @include theme-font;
+    }
+    @media (min-width: 768px) {
+    }
+    p {
+      color: white;
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: fade-out(rgb(255, 255, 255), 0.5);
+  }
+  .icon-box {
+    text-align: center;
+    padding: 70px 20px 80px 20px;
+    transition: all ease-in-out 0.3s;
+    background: white;
+
+    box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    border-radius: 20px;
+    p {
+      color: rgb(0, 0, 0);
+    }
+  }
+  .icon-box .icon-image:before {
+    content: "";
+    z-index: -1;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in-out 0.3s;
+    position: relative;
+    background: #ff0000;
+    border-radius: 50%;
+    animation: pulse-border 1500ms ease-out infinite;
+  }
+
+  .icon-box:hover {
+    border-color: $white;
+    transition: all ease-in-out 0.3s;
+    box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+
+    background-color: rgba(255, 0, 0, 0.502);
+    .icon {
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      background: white;
+      z-index: 6;
+      border: 1px solid $white;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: ease-in-out 0.3s;
+      position: relative;
+    }
+
+    .icon-image svg path {
+      transition: 0.5s;
+      fill: $theme-primary;
+      z-index: 1;
+    }
+
+    .icon-image {
+      animation: none;
+      background: white;
+      border-radius: 50px;
+    }
+    h4,
+    p {
+      color: white;
+    }
+  }
+
+  .icon-box .icon {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 3px;
+    border-radius: 50px;
+    background-color: $theme-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in-out 0.3s;
+    position: relative;
+  }
+
+  .icon-box .icon svg {
+    position: absolute;
+    top: 28px;
+    left: 24px;
+  }
+
+  .icon-box .icon-image svg path {
+    transition: 0.5s;
+    fill: $white;
+
+    z-index: 1;
+  }
+
+  .icon-box h4 {
+    font-weight: 800;
+    margin: 25px 0 15px 0;
+    font-size: 30px;
+    font-family: $font-family-base;
+  }
+  @keyframes pulse-border {
+    0% {
+      transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+      opacity: 0;
+    }
+  }
+}

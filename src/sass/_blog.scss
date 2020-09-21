@@ -1,0 +1,107 @@
+// About
+
+section.blog {
+  position: relative;
+  background-blend-mode: multiply;
+
+  .blog-content {
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: $gray-dark;
+    }
+    .display-font {
+      color: $theme-primary;
+      @include theme-font;
+    }
+    @media (min-width: 768px) {
+      h2 {
+        font-size: 38px;
+      }
+    }
+  }
+  .container-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 400px;
+      height: 100%;
+      margin: 10px;
+    }
+
+    .card-header img {
+      width: 100%;
+
+      object-fit: cover;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 20px;
+      min-height: 250px;
+    }
+    .tag {
+      background-color: $primary;
+      border: 1px solid $primary;
+      color: rgb(255, 255, 255);
+      border-radius: 50px;
+      font-size: 12px;
+      margin: 0;
+      padding: 2px 10px;
+      text-transform: uppercase;
+    }
+
+    .card-body h4 {
+      margin: 10px 0;
+      font-family: $font-family-base;
+      font-weight: 800;
+      color: $gray-800;
+    }
+    .card-body p {
+      font-size: 14px;
+      margin: 0 0 40px 0;
+      font-weight: 500;
+      color: rgb(70, 68, 68);
+    }
+    .user {
+      display: flex;
+      margin-top: auto;
+    }
+    .user img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+    .user-info h5 {
+      margin: 0;
+    }
+    .user-info small {
+      color: #888785;
+    }
+    @media (max-width: 940px) {
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 350px;
+        margin: 10px;
+      }
+    }
+  }
+}

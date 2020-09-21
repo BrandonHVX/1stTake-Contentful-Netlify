@@ -1,0 +1,93 @@
+// About
+.about-page {
+  z-index: 9999;
+}
+
+section.about {
+  z-index: 9999;
+  text-align: center;
+
+  // background-image: url("../images/bg-cta.jpg");
+  background-position: center;
+  @include background-cover;
+  .about-content {
+    position: relative;
+    z-index: 1;
+    h2 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: black;
+    }
+    .display-font {
+      color: $theme-primary;
+      @include theme-font;
+    }
+    @media (min-width: 768px) {
+      text-align: left;
+      h2 {
+        font-size: 38px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+section.why-section {
+  position: relative;
+  background-blend-mode: multiply;
+  z-index: 0;
+  color: white;
+  background: url("../images/overlay-bg.png"), $theme-secondary;
+  background: url("../images/overlay-bg.png"),
+    -webkit-linear-gradient(to left, $theme-secondary, $theme-tertiary);
+  background: url("../images/overlay-bg.png"),
+    linear-gradient(to left, $theme-secondary, $theme-tertiary);
+  background-size: cover;
+  .why-content {
+    h2 {
+      font-size: 30px;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: rgb(255, 255, 255);
+    }
+
+    h4 {
+      color: rgb(233, 233, 233);
+      @include theme-font;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.872);
+    }
+    @media (min-width: 768px) {
+      text-align: left;
+      h2 {
+        font-size: 38px;
+        text-align: left;
+      }
+    }
+  }
+  .icon-box .icon {
+    background-image: url("../images/image-frame.png");
+    background-size: cover;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    line-height: 84px;
+    float: left;
+    z-index: 1000;
+    text-align: center;
+  }
+  .f-left {
+    float: left;
+  }
+  .bg-gradient-color {
+    background-image: url("../images/students.jpg");
+  }
+  .icon-box .icon-details {
+    margin-left: 80px;
+  }
+}

@@ -1,0 +1,163 @@
+// Styling for the navbar
+#mainNav {
+  // background-color: rgba(0, 0, 0, 0.831);
+  @include transition-all;
+  @include heading-font;
+  .navbar-toggler {
+    font-size: 40px;
+    color: white;
+    border-color: transparent;
+    transition: ease-in-out 2s;
+  }
+  .navbar-brand {
+    color: $theme-primary;
+    @include heading-font;
+    &:hover,
+    &:focus {
+      color: darken($theme-primary, 10%);
+    }
+    .logo-img-white {
+      position: relative;
+
+      width: 100px;
+      height: 100px;
+      // replace the masthead.jpg image in the /img directory to change the image
+      // if the image name change, make sure to update the url path below!
+      background-image: url("../images/first-take-logo-white.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+  }
+
+  .navbar-nav {
+    opacity: 0.9;
+    padding-bottom: 2rem;
+    .nav-item {
+      .nav-link {
+        color: $white-nav-text;
+        font-family: $font-family-base;
+        font-weight: $font-weight-bold;
+        font-size: 1.5rem;
+        padding: 0.4rem 0.4rem;
+        &:hover,
+        &:active {
+          color: $primary;
+        }
+      }
+    }
+  }
+  &.navbar-shrink {
+    background-color: white;
+    .navbar-toggler {
+      font-size: 32px;
+      padding: 8px 10px;
+      color: $gray-darker;
+    }
+    .navbar-brand {
+      color: $gray-darker;
+      &:hover,
+      &:focus {
+        color: $theme-primary;
+      }
+
+      .logo-img-white {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        // replace the masthead.jpg image in the /img directory to change the image
+        // if the image name change, make sure to update the url path below!
+        background-image: url("../images/first-take-logo-black.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+      }
+    }
+
+    .navbar-nav {
+      .nav-item {
+        &.active {
+          .nav-link {
+            color: $primary !important;
+          }
+        }
+
+        .nav-link {
+          color: $gray-darker;
+          font-family: $font-family-base;
+          font-weight: $font-weight-bold;
+          font-size: 1.5rem;
+          padding: 0.4rem 0.4rem;
+          &:hover,
+          &:active {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    background-color: transparent;
+
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          color: lighten(white, 0%);
+
+          font-size: 1rem;
+          padding: 1rem;
+          &:hover,
+          &:active {
+            color: $theme-primary;
+          }
+        }
+      }
+    }
+    &.navbar-shrink {
+      background-color: white;
+
+      .navbar-brand {
+        color: $gray-darker;
+        &:hover,
+        &:focus {
+          color: $theme-primary;
+        }
+        .logo-img-white {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          // replace the masthead.jpg image in the /img directory to change the image
+          // if the image name change, make sure to update the url path below!
+          background-image: url("../images/first-take-logo-black.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+          background-size: cover;
+        }
+      }
+      .navbar-nav {
+        .nav-item {
+          &.active {
+            .nav-link {
+              color: $primary !important;
+            }
+          }
+
+          .nav-link {
+            color: red;
+            font-family: $font-family-base;
+            font-weight: $font-weight-bold;
+            font-size: 1rem;
+            padding: 1rem;
+            &:hover,
+            &:active {
+              color: $primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

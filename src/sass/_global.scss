@@ -1,0 +1,97 @@
+// Global styling for this template
+html,
+body {
+  z-index: 9999;
+  width: auto !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  @include body-font;
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  color: $theme-primary;
+  @include transition-all;
+  &:hover,
+  &:focus {
+    color: darken($theme-primary, 10%);
+  }
+}
+
+hr {
+  max-width: 100px;
+  margin: 5px auto 0;
+  border-width: 1px;
+  border-color: $theme-primary;
+}
+
+hr.light {
+  border-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-font;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+section {
+  padding: 100px 0;
+  z-index: 9999;
+
+  .section-heading-about {
+    text-align: center;
+
+    h3 {
+      font-weight: 800;
+      margin-top: 0;
+      font-size: 3rem;
+      color: $gray-dark;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .section-heading {
+    text-align: center;
+
+    margin-bottom: 100px;
+
+    h3 {
+      margin-top: 0;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .small-heading {
+    text-align: left;
+    margin: 1rem auto;
+
+    h4 {
+      margin-top: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: $gray-darker;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

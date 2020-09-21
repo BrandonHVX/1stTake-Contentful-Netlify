@@ -1,0 +1,29 @@
+@import "../sass/variables.scss";
+@import "../sass/mixins.scss";
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../sass/fontawesome/css/all.min.css";
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One:100,200,300,400,500,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900");
+
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "../sass/bootstrap-overrides.scss";
+
+// Import custom styles
+@import "../sass/global.scss";
+@import "../sass/about.scss";
+@import "../sass/films.scss";
+@import "../sass/navbar.scss";
+@import "../sass/education.scss";
+@import "../sass/contact.scss";
+@import "../sass/blog.scss";
+@import "../sass/styles.scss";
+@import "../sass/sponsors.scss";
+@import "../sass/constants.scss";
+// @import "../sass/topbar.scss";
+
+// @import "../sass/gallery.scss";
+@import "../sass/masthead.scss";
+@import "../sass/features.scss";
