@@ -25,7 +25,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter"
+    title: "1st Take Youth Film Program"
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
@@ -38,6 +38,18 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `1st Take Youth Film Program`,
+        short_name: `1st Take`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: "src/images/first-take-logo-black.png"
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,

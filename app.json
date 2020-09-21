@@ -1,12 +1,7 @@
 {
-  "name": "Contentful Gatsby Starter",
-  "description": "Gatsby starter for a Contentful project.",
-  "keywords": [
-    "contentful",
-    "gatsby",
-    "static",
-    "ssg"
-  ],
+  "name": "1st Take Youth Film Program",
+  "description": "Our mission is to Enrich The Young Minds of our Community.",
+  "keywords": ["contentful", "gatsby", "static", "ssg"],
   "repository": "https://github.com/contentful-userland/gatsby-contentful-starter",
   "success_url": "/",
   "buildpacks": [
