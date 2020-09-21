@@ -38,6 +38,8 @@ class ContactForm extends React.Component {
       home: "",
       cell: "",
       email: "",
+      message: "",
+      subject: "",
       school: "",
       relation: "",
       ethnicity: "",
@@ -138,6 +140,8 @@ class ContactForm extends React.Component {
       home,
       cell,
       email,
+      message,
+      subject,
       ethnicity,
       grade,
       school,
@@ -165,92 +169,162 @@ class ContactForm extends React.Component {
 
     return (
       <Layout>
-        <div style={{ background: "#fff" }}>
-          <div>Student Enrollment</div>
-          <div className="container">
-            <section id="form">
-              <div
-                class=" section-heading mt-5 "
-                data-wow-delay="0ms"
-                data-wow-duration="1000ms"
-              >
-                <h3 class="mrb-15 text-gray ">1st Take Student Enrollment</h3>
-                <hr className="divider mb-4" />
+        <section id="contact" class="page-section contact section-bg">
+          <div class="container" data-aos="fade-up">
+            <div
+              class=" section-heading"
+              data-wow-delay="0ms"
+              data-wow-duration="1000ms"
+            >
+              <h3 class="mrb-15 text-gray "> Contact</h3>
+              <hr className="divider mb-4" />
+            </div>
 
-                <p>
-                  Please fill out the application below and submit when
-                  complete.
-                </p>
-              </div>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-12 text-center">
-                    <form
-                      class="needs-validation"
-                      name="web message"
-                      method="post"
-                      data-netlify="true"
-                      data-netlify-honeypot="bot-field"
-                      novalidate
-                    >
-                      <input
-                        type="hidden"
-                        name="form-name"
-                        value="web message"
-                      />
-                      <div class=" small-heading">
-                        <h4 class=" text-gray ">Student Information</h4>
-                      </div>
-                      <div class="form-row">
-                        <div class="col-md-7">
-                          {" "}
-                          <div className="form-row">
-                            <div class="form-group col-sm-7">
-                              <h6 class="text-left text-none">First Name</h6>
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="first"
-                                id="validationCustom01"
-                                placeholder="First Name"
-                                value={first}
-                                onChange={this.handleChange}
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Please choose a username.
-                              </div>
-                            </div>
-                            <div class="form-group col-sm-5">
-                              <h6 class="text-left text-none">Student Name</h6>
-                              <input
-                                class="form-control "
-                                type="text"
-                                name="last"
-                                placeholder="Last Name"
-                                value={last}
-                                onChange={this.handleChange}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row"></div>
-
-                      <button type="submit" class="btn btn-primary mt-5">
-                        Submit
-                      </button>
-                    </form>
-                  </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="info-box mb-4">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p>100 NW 17th Street, Miami, FLorida 33127</p>
                 </div>
               </div>
-            </section>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>1stakeyouthfilm@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="info-box  mb-4">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>+1-305-555-5555</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <iframe
+                  title="google-map"
+                  src="https://www.google.com/maps?q=100%20NW%2017th%20Street%2C%20Miami%2C%20FLorida%2033127&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                  allowFullScreen
+                  className="md-height"
+                ></iframe>
+              </div>
+
+              <div class="col-lg-6">
+                <form
+                  class="needs-validation"
+                  name="website message"
+                  method="post"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  novalidate
+                >
+                  <div class="form-row">
+                    <div class="col-md-6 form-group">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="first"
+                        id="validationCustom01"
+                        placeholder="Name"
+                        value={first}
+                        onChange={this.handleChange}
+                        required
+                      />
+                      <div class="validate"></div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <input
+                        class="form-control"
+                        type="email"
+                        name="email"
+                        id="validationCustom01"
+                        placeholder="E-mail"
+                        value={email}
+                        onChange={this.handleChange}
+                        required
+                      />
+                      <div class="validate"></div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="subject"
+                      id="validationCustom01"
+                      placeholder="Subject"
+                      value={email}
+                      onChange={this.handleChange}
+                      required
+                    />
+                    <div class="validate"></div>
+                  </div>
+                  <div class="form-group">
+                    <textarea
+                      class="form-control"
+                      type="message"
+                      name="message"
+                      id="validationCustom01"
+                      placeholder="Message"
+                      value={message}
+                      onChange={this.handleChange}
+                      required
+                      rows="5"
+                      placeholder="Message"
+                    ></textarea>
+                    <div class="validate"></div>
+                  </div>
+
+                  <div class="text-center">
+                    <button className="btn btn-outline" type="submit">
+                      Send Message
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </Layout>
     );
   }
 }
 
 export default ContactForm;
+
+{
+  /* <div className="form-row">
+  <div class="form-group col-sm-7">
+    <h6 class="text-left text-none">First Name</h6>
+    <input
+      class="form-control"
+      type="text"
+      name="first"
+      id="validationCustom01"
+      placeholder="First Name"
+      value={first}
+      onChange={this.handleChange}
+      required
+    />
+    <div class="invalid-feedback">Please choose a username.</div>
+  </div>
+  <div class="form-group col-sm-5">
+    <h6 class="text-left text-none">Student Name</h6>
+    <input
+      class="form-control "
+      type="text"
+      name="last"
+      placeholder="Last Name"
+      value={last}
+      onChange={this.handleChange}
+    />
+  </div>
+</div>; */
+}
